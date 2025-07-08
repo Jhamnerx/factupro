@@ -36,7 +36,6 @@ class DigemidAyudaImport implements ToCollection, WithChunkReading, ShouldQueue
         }
 
         // Eliminar todos los registros de la tabla antes de la importación
-        DigemidAyuda::truncate();
 
         $total = count($rows);
         $registered = 0;
