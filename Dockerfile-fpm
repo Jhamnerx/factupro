@@ -1,0 +1,23 @@
+# Dockerfile-fpm
+FROM rash07/php-fpm:2.0
+
+# Instala libzip y la extensión zip de PHP
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      libzip-dev \
+      zip \
+ && docker-php-ext-configure zip \
+ && docker-php-ext-install zip \
+ && rm -rf /var/lib/apt/lists/*
+
+# Establece el directorio de trabajo
+WORKDIR /var/www/html
+
+# Copia tu aplicación (si quieres incluir algo adicional en build time)
+# COPY . /var/www/html
+
+# Exponer el socket o puerto si fuera necesario (normalmente PHP-FPM usa un socket)
+# EXPOSE 9000
+
+# Mantén el entrypoint original de la imagen
+CMD ["php-fpm"]
