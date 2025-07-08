@@ -8,6 +8,7 @@ RUN apt-get update \
       zip \
  && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /var/www/html
+ COPY phpini.ini /usr/local/etc/php/conf.d/phpini.ini
+ WORKDIR /var/www/html
 
 # NO ESCRIBIMOS CMD ni ENTRYPOINT para heredar el original
