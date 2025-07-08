@@ -1,0 +1,10 @@
+# Dockerfile-supervisor
+FROM rash07/php7.4-supervisor
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      php-zip \
+      zip \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/www/html
